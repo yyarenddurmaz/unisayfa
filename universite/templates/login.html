@@ -1,0 +1,55 @@
+{% extends "bos.html" %}
+{% block baslik %} Giriş Yap {% endblock %} 
+{% load static %}
+{% block govde %}
+<link rel="stylesheet" href="{% static 'css/renk.css' %}">
+<link rel="stylesheet" href="{% static 'css/icrenk.css' %}">
+
+<a href="/">
+    <button type="button" class="btn m-2 renk yazi" style= "border-radius: 10px;">Anasayfa</button>
+</a>
+<form class="row g-3 pt-4" method="post" action="/login/" >
+  {% csrf_token %}
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+      <div class="container p-3 my-3 border renk " style="border-radius: 10px">
+      <div class="row justify-content-center">
+        <div class="col-5">
+
+          <div class="col-12 pt-1">
+            <label for="username" class="form-label yazi">Kullanıcı Adı</label>
+            <input type="text" class="form-control" id="username" name="username">
+          </div>
+
+          <div class="col-12 pt-1" >
+            <label for="password" class="form-label yazi">Şifre</label>
+            <input type="password" class="form-control" id="password" name="password">
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn mt-3 icrenk" style="color:#b30000;">Giriş</button>
+          </div>
+
+          {% if login == 'Hata' %}
+
+            <div class="row pt-3" style="padding-left: 10px; padding-rigth: 10px">
+              <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <img src="{% static 'alert.png' %}" width="24px">
+                <div style="padding-left: 5px">Kullanıcı adı veya şifre yanlış!</div>
+              </div>
+            </div>
+
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="col-md-4">
+    </div>
+    
+
+</form>
+
+{% endblock %}

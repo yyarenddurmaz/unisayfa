@@ -1,0 +1,28 @@
+{% extends "bos.html" %}
+{% block baslik %} Kayıt Ol {% endblock %} 
+{% load static %}
+{% block govde %}
+<link rel="stylesheet" href="{% static 'css/renk.css' %}">
+<link rel="stylesheet" href="{% static 'css/yazi.css' %}">
+<link rel="stylesheet" href="{% static 'css/icrenk.css' %}">
+
+  <a href="/">
+      <button type="button" class="btn m-2 renk yazi" style= "border-radius: 10px;">Anasayfa</button>
+  </a>
+
+  <div class="container p-3 my-3 border renk yazi"style="border-radius: 30px; height: auto; width:auto;">
+    <form class="row g-3 pt-4" method="post" action="/register/" novalidate>
+      {% csrf_token %}
+      <div class="row justify-content-center">
+        <div class="col-5 ">
+           {{ form.as_p }}
+           <div class="col-12 pt-3">
+              <button type="submit" class="btn m-2 icrenk" style= "border-radius: 10px;position:inline;">Kayıt ol</button>
+           </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+{% endblock %}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  {% load static %}
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="{% static 'iku1logo.png' %}">
+  <title>{% block baslik %} {% endblock %} </title>
+</head>
+<body style="background-color:#FFFBEF;">
+
+  <link rel="stylesheet" href="{% static 'css/renk.css' %}">
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+  <link rel="stylesheet" href="{% static 'css/yazi.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bold.css' %}">
+  <link rel="stylesheet" href="{% static 'css/icrenk.css' %}">
+  
+  <div class="row">
+    <div class="col-md-2">
+      <!--sidebar-->
+      <nav class="d-flex flex-column flex-shrink-0 p-4 nav">
+        
+              <div class="row-md-2">
+                <a class="navbar-brand" href="/" style="margin-bottom:10px;"><img width="200px" src="{% static 'ikulogo.png' %}"></a>
+                <hr class="yazi">
+              </div>
+              
+              <div class="row-md-6">
+                <ul class="nav nav-pills flex-column mb-auto">
+                  <li class="nav-item ">
+                    <a class="nav-link yazi" href="#" role="button" style="font-size:15pt;">Aday Öğrenci</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle yazi" href="#" role="button" data-bs-toggle="dropdown"  style="font-size:15pt;">Üniversitemiz</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Hakkımızda</a></li>
+                      <li><a class="dropdown-item" href="#">Yönetim</a></li>
+                      <li><a class="dropdown-item" href="#">Kurumsal</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle yazi" href="#" role="button" data-bs-toggle="dropdown" style="font-size:15pt;">Akademik</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/fakulte/"><b>Fakülteler</b></a></li>
+                      <li><a class="dropdown-item" href="#">Meslek Yüksekokulları</a></li>
+                      <li><a class="dropdown-item" href="#">Enstitüler</a></li>
+                      <li><a class="dropdown-item" href="#">Bölüm & Birim & Merkez</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle yazi" href="#" role="button" data-bs-toggle="dropdown" style="font-size:15pt;">Öğrenci</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Öğrenci İşleri</a></li>
+                      <li><a class="dropdown-item" href="#">Yaz Öğretimi</a></li>
+                      <li><a class="dropdown-item" href="#">Kültür Noktası</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+        
+              <div class="row-md-2">
+                <br>
+                <br>
+                <br>
+              </div>
+        
+              <div class="row-md-4" style="position: absolute; bottom:0;">
+                <div class="row-sm-5">
+                  <hr class="yazi">
+                  <p class="yazi" style="text-align:center;"><b>BİZİ TAKİP EDİN</b></p>
+                  <div class="text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item" style="float:left;display:inline;">
+
+                    <div class="container-fluid">
+                      <div class="row">
+
+                        <div class="col-sm-3" style="text-align: center;">
+                          <div class="facebook"><a href="https://www.facebook.com/IKUEDU/" target="_blank"><img  style="width:30px; height:30px;" src="{% static 'facebook.png' %}"/></a></div>
+                        </div>
+
+                        <div class="col-sm-3" style="text-align: center;">
+                          <div class="twitter"><a href="https://twitter.com/ikuedu" target="_blank"><img  style="width:30px; height:30px;" src="{% static 'x.png' %}"/></a></div>
+                        </div>
+
+                        <div class="col-sm-3" style="text-align: center;">
+                          <div class="youtube"><a href="https://www.youtube.com/user/IKUedu" target="_blank"><img  style="width:30px; height:30px;" src="{% static 'youtube.jpg' %}"/></a></div>
+                        </div>
+
+                        <div class="col-sm-3" style="text-align: center;">
+                          <div class="instagram"><a href="https://www.instagram.com/ikuedu/" target="_blank"><img  style="width:30px; height:30px;" src="{% static 'instagram.png' %}"/></a></div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+                  <hr class="yazi">
+                </div>
+                <div class="row-sm-2"
+                  <br>
+                  <br>
+                </div>
+                <div class="row-sm-5">
+                  <hr class="yazi">
+                  <div class="row-md-2 yazi">
+                    (0212) 498 41 41 <br>
+                  </div>
+                  <div class="row-md-2 yazi">
+                    (0212) 498 43 06 <br>
+                  </div>
+                  <div class="row-md-2 yazi">
+                    <a class="yazi" style="text-decoration:none;" href="mailto:someone@example.com">kultur@iku.edu.tr</a> <br>
+                  </div>
+                  <div class="row-md-2 yazi">
+                    E5 Karayolu üzeri Bakırköy 34158 İstanbul
+                  </div>
+
+                </div>
+              </div>
+                
+      </nav>
+    </div>  
+ 
+    <div class="col-md-7">
+      <!--carousel-->
+      <div class="container">
+        <div id="carouselExampleIndicators dark" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner" style="border:5px; border-color:#b30000;border-radius: 20px; ">
+            <div class="carousel-item active">
+              <img src="{% static 'mahseri-cumbus.png' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'akinguc.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'tedx.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-3">
+      {% if user.is_authenticated %}
+        
+        <a type="button" class="btn m-2 renk yazi" href="/logout/" style="float:right;" >Çıkış Yap</a>
+        <label type="button" class="btn m-2 renk yazi" style="float:right;" >Hoş geldin, {{user.username}}</label>
+      {% if user.is_superuser %}
+        <a href="/veriliste/">
+            <button type="button" class="btn m-2 renk yazi" style= "float:right;border-radius: 10px;">Liste</button>
+        </a>
+       {% endif %}
+
+      {% else %}
+
+        <a type="button" class="btn m-2 renk yazi" style="float:right;" href="/login/">Giriş Yap</a>
+
+        <a type="button" class="btn m-2 renk yazi" style="float:right;" href="/register/">Kayıt Ol</a>
+
+      {% endif %}
+      
+    </div>
+  </div>
+
+  {% block govde %}
+  {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+{% extends "bos.html" %}
+{% block baslik %} Haber Düzenleme {% endblock %}
+{% load static %}
+{% block govde %}
+<link rel="stylesheet" href="{% static 'css/renk.css' %}">
+<link rel="stylesheet" href="{% static 'css/icrenk.css' %}">
+<link rel="stylesheet" href="{% static 'css/yazi.css' %}">
+<link rel="stylesheet" href="{% static 'css/bold.css' %}">
+
+  <div class="container p-3 my-3 border renk yazi" style="border-radius: 10px;">
+    <a href="/veriliste/">
+      <button type="button" class="btn m-2 icrenk" style="border-radius: 10px; color:#000000; margin:10px;">Listeye Geri Dön</button>
+    </a>
+
+    <div class="container p-3 my-3 border icrenk" style="color:#000000; border-radius: 10px;">
+      <form class="row icrenk" method="post" action="/veriliste/haber/duzenle/{{haber.haber_kisaltma}}/" enctype="multipart/form-data" style="border-radius:10px; color:#000000">
+        
+        <div class="col-md-6 mt-2 mb-2">
+           <label for="haber_baslik" class="form-label">Haber Başlığı</label>
+           <input type="text" class="form-control" id="haber_baslik" name="haber_baslik" value="{{haber.haber_baslik}}">
+        </div>
+        <div class="col-md-6 mt-2 mb-2">
+           <label for="haber_kisaltma" class="form-label">Haber Kısaltması</label>
+           <input type="text" class="form-control" id="haber_kisaltma" name="haber_kisaltma"value="{{haber.haber_kisaltma}}">
+        </div>
+        <div class="col-md-6 mt-2 mb-2">
+           <label for="haber" class="form-label">Haber Metni</label>
+           <input type="text" class="form-control" id="haber" name="haber" value="{{haber.haber}}">
+        </div>
+        <div class="col-md-6 mt-2 mb-2">
+           <label for="tarih" class="form-label">Haberin Tarihi</label>
+           <input type="datetime" class="form-control" id="tarih" name="tarih" value="{{ haber.tarih|date:'Y-m-d' }}">
+        </div>
+        <div>
+          <button type="submit" class="btn renk yazi my-2">Güncelle</button>
+        </div>
+        
+        {% if yenikayit2 == "True" %}
+
+          <div class="row pt-2 px-3">
+
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+
+              <img src="{% static 'info.png' %}" width="24px">
+              <div class="ps-2">
+                Başarıyla güncellendi.
+              </div>
+
+            </div>
+
+          </div>
+
+        {% endif %}
+
+        {% for hata in hatalistesi %}
+
+          <div class="row pt-2 px-3">
+
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+
+              <img src="{% static 'alert.png' %}" width="24px">
+              <div class="ps-2">
+                {{ hata }}
+              </div>
+
+            </div>
+
+          </div>
+
+        {% endfor %}
+      </form>
+
+    </div>
+    
+  </div>
+
+{% endblock %}

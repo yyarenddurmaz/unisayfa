@@ -1,0 +1,83 @@
+{% extends "bos.html" %}
+{% block baslik %} Bölüm Ekleme {% endblock %} 
+{% load static %}
+{% block govde %}
+<link rel="stylesheet" href="{% static 'css/renk.css' %}">
+<link rel="stylesheet" href="{% static 'css/icrenk.css' %}">
+<link rel="stylesheet" href="{% static 'css/yazi.css' %}">
+
+  <a href="/veriliste/">
+      <button type="button" class="btn m-2 renk yazi" value="Geri Dön" style= "border-radius: 10px; margin:10px;">Listeye Geri Dön</button>
+  </a>
+  
+  <div class="container mt-3">
+  
+    <div class="row">
+      <div class="container p-3 my-3 border renk yazi" style="border-radius: 10px;">
+        <form class="row g-3" method="post" action="/veriliste/bolum/ekle/" enctype="multipart/form-data">
+          {% csrf_token %}
+          
+          <div class="col-md-6">
+            <label for="fakulte" class="form-label">Fakülte</label>
+            <select class="form-control" id="fakulte" name="fakulte">
+              {% for fakulte in fakulteliste %}
+                <option value="{{fakulte.fakulte_ad}}">{{fakulte.fakulte_ad}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          
+          <div class="mb-3">
+            <label for="bolum_no" class="form-label">Bölüm No</label>
+            <input type="text" class="form-control" id="bolum_no" name="bolum_no">
+          </div>
+          <div class="mb-3">
+            <label for="bolum_ad" class="form-label">Bölüm Adı</label>
+            <input type="text" class="form-control" id="bolum_ad" name="bolum_ad">
+          </div>
+          <div class="mb-3">
+            <label for="bolum_kisaltma" class="form-label">Bölüm Kısaltması</label>
+            <input type="text" class="form-control" id="bolum_kisaltma" name="bolum_kisaltma">
+          </div>
+          
+          <div>
+            <button type="submit" class="btn icrenk">Kaydet</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  {% if yenikayit1 == "True" %}
+  
+    <div class="row pt-2 px-3">
+  
+      <div class="alert alert-success d-flex align-items-center" role="alert">
+  
+        <img src="{% static 'info.png' %}" width="24px">
+        <div class="ps-2">
+          Yeni kayıt başarıyla eklendi.
+        </div>
+  
+      </div>
+  
+    </div>
+  
+  {% endif %}
+  
+  {% for hata in hatalistesi %}
+  
+    <div class="row pt-2 px-3">
+  
+      <div class="alert alert-danger d-flex align-items-center" role="alert">
+  
+        <img src="{% static 'alert.png' %}" width="24px">
+        <div class="ps-2">
+          {{ hata }}
+        </div>
+  
+      </div>
+  
+    </div>
+  
+  {% endfor %}
+{% endblock %}

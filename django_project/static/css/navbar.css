@@ -1,0 +1,9 @@
+nav{
+  width: 250px; 
+  height:100%; float:left; 
+  position:fixed; 
+  border-top-right-radius:3px; 
+  border-bottom-right-radius:3px;
+  background-color:#B30000;
+  color:#000000
+}

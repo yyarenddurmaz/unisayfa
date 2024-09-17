@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  {% load static %}
+  <meta charset="UTF-8">
+  <title>{% block baslik %} {% endblock %} </title>
+</head>
+  
+<body style="background-color:#FFFBEF;">
+
+  <link rel="stylesheet" href="{% static 'css/renk.css' %}">
+  <link rel="stylesheet" href="{% static 'css/icrenk.css' %}">
+  <link rel="stylesheet" href="{% static 'css/yazi.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bold.css' %}">
+  
+  {% block govde %}
+  {% endblock %}
+</body>
+  
+</html>

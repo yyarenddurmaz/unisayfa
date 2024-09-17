@@ -1,0 +1,76 @@
+{% extends "master.html" %}
+{% block baslik %} Anasayfa {% endblock %} 
+{% load static %}
+{% block govde %}
+<link rel="stylesheet" href="{% static 'css/renk.css' %}">
+<link rel="stylesheet" href="{% static 'css/icrenk.css' %}">
+
+
+<div class="container" style="display:block;margin:auto;width:60%">
+  
+  <div class="container-fluid mt-3">
+    <div class="row">
+      
+
+      <div class="col-sm-7">
+        
+        <p class="p-2 my-3" style="color:black;margin:auto;text-align:center;font-size:15pt;"><b>Bağlantılar</b></p>
+        <div class="container">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col sm-3 my-3"><img class="card-img-bottom" src="{% static 'euni.jpg' %}" alt="euni" style="width:110px; height:110px;"></div>
+              <div class="col sm-3 my-3"><img class="card-img-bottom" src="{% static 'uib.jpg' %}" alt="uib" style="width:110px; height:110px;"></div>
+              <div class="col sm-3 my-3"><img class="card-img-bottom" src="{% static 'ogrencilerimiz.jpg' %}" alt="ogr" style="width:110px; height:110px;"></div>
+            </div>
+          </div>
+          
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col sm-3 my-3"><img class="card-img-bottom" src="{% static 'kutup.jpg' %}" alt="kutup" style="width:110px; height:110px;"></div>
+              <div class="col sm-3 my-3"><img class="card-img-bottom" src="{% static 'mezun.jpg' %}" alt="mezun" style="width:110px; height:110px;"></div>
+              <div class="col sm-3 my-3"><img class="card-img-bottom" src="{% static 'haberler.jpg' %}" alt="news" style="width:110px; height:110px;"></div>
+            </div>
+          </div>
+          
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col sm-3"><img class="card-img-bottom" src="{% static 'alol.jpg' %}" alt="alol" style="width:110px; height:110px;"></div>
+              <div class="col sm-3"><img class="card-img-bottom" src="{% static 'gsuam.gif' %}" alt="gsuam" style="width:110px; height:110px;"></div>
+              <div class="col sm-3"><img class="card-img-bottom" src="{% static 'anket.jpg' %}" alt="anket" style="width:110px; height:110px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <!-- ikinci kisim-->
+      <div class="col-sm-5" style="text-align: center;">
+        <p class="p-2 my-3" style="color:black;margin:auto;text-align:center;font-size:15pt;"><b>Neler Oluyor?</b></p>
+        <div class="container-fluid">
+          <div class="row">
+            {% for haber in haberliste %}
+              {% if forloop.counter <= 4 %}
+                <div class="container my-2 p-1" style="height: 100%;">
+                    <div class="row">
+                        <div class="col-sm-4 mb-2 yazi" style="background-color:#b30000; border-radius:15px;">
+                            <p><b>{{ haber.tarih }}</b></p>
+                        </div>
+                        
+                        <div class="col-sm-8 mb-2" style="border-radius:15px;">
+                            <p>{{ haber.haber_baslik }}</p>
+                        </div>
+                    </div>
+                </div>
+                <hr class= "renk">
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+{% endblock %}
+
+

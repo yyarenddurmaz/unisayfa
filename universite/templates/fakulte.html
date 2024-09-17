@@ -1,0 +1,48 @@
+{% extends "master.html" %}
+{% block baslik %} Fakülteler {% endblock %} 
+
+{% block govde %}
+
+<div class="container my-4" style="display:block;margin:auto;width:50%;">
+
+  <div id="accordion">
+    {% for fakulte in fakulteliste %}
+    <div class="card mb-2" style="background-color:transparent;border-width: 0px;">
+      <div class="card-header" style="background-color:#E09999;">
+        <a class="collapsed btn yazi" data-bs-toggle="collapse" href="#collapse{{forloop.counter}}">
+        <b>{{fakulte.fakulte_ad}}</b>
+        </a>
+      </div>
+      <div id="collapse{{forloop.counter}}" class="collapse" data-bs-parent="#accordion">
+        <div class="card-body">
+          <p><b>Fakülte Dekanı:</b> {{fakulte.fakulte_dekan}}</p>
+          <p><b>Fakülte Telefon Numarası:</b> {{fakulte.fakulte_tel}}</p>
+          <p><b>Fakülte Mail Adresi:</b> {{fakulte.fakulte_mail}}</p>
+          <p><b>Fakülte Kampüsü:</b> {{fakulte.kampus.kampus_adres}}</p>
+          
+          <hr class="renk">
+          <p><b>BÖLÜMLER</b></p>
+          <div class="row row-cols-1 row-cols-md-4 g-4">
+            {% for bolum in fakulte.bolumler.all %}
+            <div class="col me-2" style="text-align:center;">
+              <p>{{bolum.bolum_ad}}</p>
+              <a href="{% url 'bolum' bolum_kisaltma=bolum.bolum_kisaltma %}" class="btn" role="button">
+                <img src="{{bolum.bolum_logo}}" alt="{{bolum.bolum_ad}}"style="max-width: 100px; max-height: 100px;">
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+

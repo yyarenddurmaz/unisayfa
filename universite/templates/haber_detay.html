@@ -1,0 +1,43 @@
+{% extends "bos.html" %}
+{% block baslik %} Haber Detay {% endblock %}
+{% load static %}
+{% block govde %}
+<link rel="stylesheet" href="{% static 'css/renk.css' %}">
+<link rel="stylesheet" href="{% static 'css/icrenk.css' %}">
+<link rel="stylesheet" href="{% static 'css/yazi.css' %}">
+<link rel="stylesheet" href="{% static 'css/bold.css' %}">
+
+  <div class="container p-3 my-3 border renk yazi" style="border-radius: 10px; ">
+    <a href="/veriliste/">
+      <button type="button" class="btn m-2 icrenk" style="border-radius: 10px; color:#000000; margin:10px;">Listeye Geri Dön</button>
+    </a>
+    <a href="/veriliste/haber/duzenle/{{haber.haber_kisaltma}}">
+      <button type="button" class="btn m-2 icrenk" style="border-radius: 10px; color:#000000; margin:10px;">Düzenle</button>
+    </a>
+    
+    <div class="container p-3 my-3 border icrenk" style="color:#000000; border-radius: 10px;">
+      
+       
+        <div class="col-md-6 mt-2 mb-2">
+           <label for="haber_baslik" class="form-label">Haber Başlığı</label>
+           <input type="text" class="form-control" id="haber_baslik" value="{{haber.haber_baslik}}" readonly>
+        </div>
+        <div class="col-md-6 mt-2 mb-2">
+           <label for="haber.haber_kisaltma" class="form-label">Haber Kısaltması</label>
+           <input type="text" class="form-control" id="haber.haber_kisaltma" value="{{haber.haber_kisaltma}}" readonly>
+        </div>
+        <div class="col-md-6 mt-2 mb-2">
+           <label for="haber" class="form-label">Haber Metni</label>
+           <input type="text" class="form-control" id="haber" value="{{haber.haber}}" readonly>
+        </div>
+        <div class="col-md-6 mt-2 mb-2">
+            <label for="tarih" class="form-label">Haberin Tarihi</label>
+            <input type="date" class="form-control" id="tarih" value="{{ haber.tarih|date:'Y-m-d' }}" readonly>
+
+        </div>
+        
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

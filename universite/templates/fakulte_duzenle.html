@@ -1,0 +1,94 @@
+{% extends "bos.html" %}
+{% block baslik %} Fakülte Düzenleme {% endblock %}
+{% load static %}
+{% block govde %}
+<link rel="stylesheet" href="{% static 'css/renk.css' %}">
+<link rel="stylesheet" href="{% static 'css/icrenk.css' %}">
+<link rel="stylesheet" href="{% static 'css/yazi.css' %}">
+<link rel="stylesheet" href="{% static 'css/bold.css' %}">
+
+  <div class="container p-3 my-3 border renk yazi" style="border-radius: 10px;">
+    <a href="/veriliste/">
+      <button type="button" class="btn m-2 icrenk" style="border-radius: 10px; color:#000000; margin:10px;">Listeye Geri Dön</button>
+    </a>
+    
+    <div class="container p-3 my-3 border icrenk" style="color:#000000; border-radius: 10px;">
+      <form class="row icrenk" method="post" action="/veriliste/fakulte/duzenle/{{fakulte.fakulte_kisaltma}}/" enctype="multipart/form-data" style="border-radius:10px; color:#000000">
+        <div class="col-md-6 mt-2 mb-2">
+           <label for="kampus_adi" class="form-label">Fakülte Kampüsü</label>
+           <input type="text" class="form-control" id="kampus_adi" name="kampus_adi" value="{{fakulte.kampus.kampus_adi}}">
+        </div>
+        <div class="col-md-6 mt-2 mb-2">
+           <label for="fakulte_no" class="form-label">Fakülte No</label>
+           <input type="text" class="form-control" id="fakulte_no" name="fakulte_no" value="{{fakulte.fakulte_no}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="fakulte_ad" class="form-label">Fakülte Adı</label>
+           <input type="text" class="form-control" id="fakulte_ad" name="fakulte_ad" value="{{fakulte.fakulte_ad}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="fakulte_kisaltma" class="form-label">Fakülte Kısaltması</label>
+           <input type="text" class="form-control" id="fakulte_kisaltma" name="fakulte_kisaltma" value="{{fakulte.fakulte_kisaltma}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="fakulte_dekan" class="form-label">Fakülte Başkanı</label>
+           <input type="text" class="form-control" id="fakulte_dekan" name="fakulte_dekan" value="{{fakulte.fakulte_dekan}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="fakulte_tel" class="form-label">Fakülte Telefonu</label>
+           <input type="text" class="form-control" id="fakulte_tel" name="fakulte_tel" value="{{fakulte.fakulte_tel}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="fakulte_mail" class="form-label">Fakülte Mail Adresi</label>
+           <input type="text" class="form-control" id="fakulte_mail" name="fakulte_mail" value="{{fakulte.fakulte_mail}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="fakulte_url" class="form-label">Fakülte URL</label>
+           <input type="text" class="form-control" id="fakulte_url" name="fakulte_url" value="{{fakulte.fakulte_url}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="fakulte_logo" class="form-label">Fakülte Logosu</label>
+           <input type="file" class="form-control" id="fakulte_logo" name="fakulte_logo">
+        </div>
+        <div>
+          <button type="submit" class="btn renk yazi my-2">Güncelle</button>
+        </div>
+        {% if yenikayit == "True" %}
+
+          <div class="row pt-2 px-3">
+
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+
+              <img src="{% static 'info.png' %}" width="24px">
+              <div class="ps-2">
+                Başarıyla güncellendi.
+              </div>
+
+            </div>
+
+          </div>
+
+        {% endif %}
+
+        {% for hata in hatalistesi %}
+
+          <div class="row pt-2 px-3">
+
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+
+              <img src="{% static 'alert.png' %}" width="24px">
+              <div class="ps-2">
+                {{ hata }}
+              </div>
+
+            </div>
+
+          </div>
+
+        {% endfor %}
+      </form>
+      
+    </div>
+  </div>
+
+{% endblock %}

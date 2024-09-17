@@ -1,0 +1,248 @@
+{% extends "bos.html" %}
+{% block baslik %} Veri Listeleri {% endblock %} 
+{% load static %}
+{% block govde %}
+
+<link rel="stylesheet" href="{% static 'css/renk.css' %}">
+<link rel="stylesheet" href="{% static 'css/icrenk.css' %}">
+<link rel="stylesheet" href="{% static 'css/yazi.css' %}">
+
+  <a href="/">
+      <button type="button" class="btn m-2 renk yazi" style= "border-radius: 10px;">Anasayfa</button>
+  </a>
+  
+  <div class="container">
+    <div class="row">
+      
+      <!--fakulte-->
+      <div class="col">
+        <div class="container p-3 my-3 border renk yazi" style="border-radius: 10px;">
+  
+          <a href="{% url 'fakulte_ekle' %}">
+              <button type="button" class="btn mb-2 icrenk">Yeni Fakülte Ekle</button>
+          </a>
+          <div class="icrenk" style="border-radius:10px;">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Fakülte Adı</th>
+                          <th scope="col">Detay</th>
+                          <th scope="col">Düzenle</th>
+                          <th scope="col">Sil</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for fakulte in fakulteliste %}
+                          <tr>
+                              <th scope="row">{{ forloop.counter }}</th>
+                              <td>{{ fakulte.fakulte_ad }}</td>
+                              
+                              <td>
+                                  <a href="/veriliste/fakulte/detay/{{fakulte.fakulte_kisaltma}}">
+                                      <img src="{% static 'detail.jpg' %}" width="25 px">
+                                  </a>
+                              </td>
+                              <td>
+                                  <a href="/veriliste/fakulte/duzenle/{{fakulte.fakulte_kisaltma}}">
+                                      <img src="{% static 'edit.png' %}" width="25 px">
+                                  </a>
+                              </td>
+                              <form class="row g-3 pt-4" method="post" action="/veriliste/">
+                                {% csrf_token %}
+  
+                                <td>
+                                  <a type="button" class="btn button-success urButtons" data-bs-toggle="modal" data-bs-target="#silModal{{fakulte.fakulte_kisaltma}}">
+                                    <img src="{% static 'delete.png' %}" class="rounded-circle _l-h1" alt="Remove Button" width="25" height="25">
+                                  </a>
+                                </td>
+                                <input class="d-none" name="sil1" value="{{fakulte.fakulte_kisaltma}}">
+  
+                                <div class="modal fade" id="silModal{{fakulte.fakulte_kisaltma}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+  
+                                      <div class="modal-header">
+                                        <h5 class="modal-title text-dark" id="staticBackdropLabel">Emin misiniz?</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+  
+                                      <div class="modal-body text-dark">
+                                        <b>{{fakulte.fakulte_ad}}</b> fakültesinin kaydını silmek istiyor musunuz?
+                                      </div>
+  
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn bg-light" data-bs-dismiss="modal">Hayır</button>
+                                        <button type="submit" class="btn renk yazi">Evet</button>
+                                      </div>
+  
+                                    </div>
+                                  </div>
+                                </div>
+  
+                              </form>
+                          </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+  
+  
+      
+      <!--bolum-->
+      <div class="col">
+        <div class="container p-3 my-3 border renk yazi" style=" border-radius: 10px;">
+          <a href="{% url 'bolum_ekle' %}">
+              <button type="button" class="btn mb-2 icrenk">Yeni Bölüm Ekle</button>
+          </a>
+  
+          <div class="icrenk" style="border-radius:10px;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Fakülte Adı</th>
+                        <th scope="col">Bölüm Adı</th>
+                        <th scope="col">Detay</th>
+                        <th scope="col">Düzenle</th>
+                        <th scope="col">Sil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bolum in bolumliste %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ bolum.fakulte.fakulte_ad }}</td>
+                            <td>{{ bolum.bolum_ad }}</td>
+                            <td>
+                                <a href="/veriliste/bolum/detay/{{bolum.bolum_kisaltma}}">
+                                    <img src="{% static 'detail.jpg' %}" width="25 px">
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/veriliste/bolum/duzenle/{{bolum.bolum_kisaltma}}">
+                                    <img src="{% static 'edit.png' %}" width="25 px">
+                                </a>
+                            </td>
+                            <form class="row g-3 pt-4" method="post" action="/veriliste/">
+                              {% csrf_token %}
+  
+                              <td>
+                                <a type="button" class="btn button-success urButtons" data-bs-toggle="modal" data-bs-target="#silModal{{bolum.bolum_kisaltma}}">
+                                  <img src="{% static 'delete.png' %}" class="rounded-circle _l-h1" alt="Remove Button" width="25" height="25">
+                                </a>
+                              </td>
+                              <input class="d-none" name="sil2" value="{{bolum.bolum_kisaltma}}">
+  
+                              <div class="modal fade" id="silModal{{bolum.bolum_kisaltma}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+  
+                                    <div class="modal-header">
+                                      <h5 class="modal-title text-dark" id="staticBackdropLabel">Emin misiniz?</h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+  
+                                    <div class="modal-body text-dark">
+                                      <b>{{bolum.bolum_ad}}</b> bölümünün kaydını silmek istiyor musunuz?
+                                    </div>
+  
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn bg-light" data-bs-dismiss="modal">Hayır</button>
+                                      <button type="submit" class="btn renk yazi">Evet</button>
+                                    </div>
+  
+                                  </div>
+                                </div>
+                              </div>
+  
+                            </form>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+      <!--haber-->
+      <div class="col">
+        <div class="container p-3 my-3 border renk yazi" style=" border-radius: 10px;">
+          <a href="{% url 'haber_ekle' %}">
+              <button type="button" class="btn mb-2 icrenk">Yeni Haber Ekle</button>
+          </a>
+
+          <div class="icrenk" style="border-radius:10px;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Haber</th>
+                        <th scope="col">Tarih</th>
+                        <th scope="col">Detay</th>
+                        <th scope="col">Düzenle</th>
+                        <th scope="col">Sil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for haber in haberliste %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ haber.haber_baslik }}</td>
+                            <td>{{ haber.tarih }}</td>
+                            <td>
+                                <a href="/veriliste/haber/detay/{{haber.haber_kisaltma}}">
+                                    <img src="{% static 'detail.jpg' %}" width="25 px">
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/veriliste/haber/duzenle/{{haber.haber_kisaltma}}">
+                                    <img src="{% static 'edit.png' %}" width="25 px">
+                                </a>
+                            </td>
+                            <form class="row g-3 pt-4" method="post" action="/veriliste/">
+                              {% csrf_token %}
+
+                              <td>
+                                <a type="button" class="btn button-success urButtons" data-bs-toggle="modal" data-bs-target="#silModal{{haber.haber_kisaltma}}">
+                                  <img src="{% static 'delete.png' %}" class="rounded-circle _l-h1" alt="Remove Button" width="25" height="25">
+                                </a>
+                              </td>
+                              <input class="d-none" name="sil3" value="{{haber.haber_kisaltma}}">
+
+                              <div class="modal fade" id="silModal{{haber.haber_kisaltma}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+
+                                    <div class="modal-header">
+                                      <h5 class="modal-title text-dark" id="staticBackdropLabel">Emin misiniz?</h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body text-dark">
+                                      <b>{{haber.haber_baslik}}</b> haberinin kaydını silmek istiyor musunuz?
+                                    </div>
+
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn bg-light" data-bs-dismiss="modal">Hayır</button>
+                                      <button type="submit" class="btn renk yazi">Evet</button>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+
+                            </form>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

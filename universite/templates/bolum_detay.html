@@ -1,0 +1,86 @@
+{% extends "bos.html" %}
+{% block baslik %} Bölüm Detayı {% endblock %}
+{% load static %}
+{% block govde %}
+<link rel="stylesheet" href="{% static 'css/renk.css' %}">
+<link rel="stylesheet" href="{% static 'css/icrenk.css' %}">
+<link rel="stylesheet" href="{% static 'css/yazi.css' %}">
+<link rel="stylesheet" href="{% static 'css/bold.css' %}">
+
+  <div class="container p-3 my-3 border renk yazi" style="border-radius: 10px;">
+    <a href="/veriliste/">
+      <button type="button" class="btn m-2 icrenk" style="border-radius: 10px; color:#000000; margin:10px;">Listeye Geri Dön</button>
+    </a>
+    <a href="/veriliste/bolum/duzenle/{{bolum.bolum_kisaltma}}">
+      <button type="button" class="btn m-2 icrenk" style="border-radius: 10px; color:#000000; margin:10px;">Düzenle</button>
+    </a>
+    <div class="container p-3 my-3 border icrenk" style="color:#000000; border-radius: 10px;">
+      <img src="{{bolum.bolum_logo}}" class="mx-auto my-3 d-flex align-items-center" style="max-width: 100px; max-height: 100px;">
+     
+      <form class="row icrenk" style="border-radius:10px; color:#000000">
+        <div class="col-md-6 mt-2 mb-2">
+           <label for="fakulte_ad" class="form-label">Bölüm Fakültesi</label>
+           <input type="text" class="form-control" id="fakulte_ad" value="{{bolum.fakulte.fakulte_ad}}" readonly>
+        </div>
+        <div class="col-md-6 mt-2 mb-2">
+           <label for="bolum_no" class="form-label">Bölüm No</label>
+           <input type="text" class="form-control" id="bolum_no" value="{{bolum.bolum_no}}" readonly>
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_ad" class="form-label">Bölüm Adı</label>
+           <input type="text" class="form-control" id="bolum_ad" value="{{bolum.bolum_ad}}" readonly>
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_kisaltma" class="form-label">Bölüm Kısaltması</label>
+           <input type="text" class="form-control" id="bolum_kisaltma" value="{{bolum.bolum_kisaltma}}" readonly>
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_baskan" class="form-label">Bölüm Başkanı</label>
+           <input type="text" class="form-control" id="bolum_baskan" value="{{bolum.bolum_baskan}}" readonly>
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_tel" class="form-label">Bölüm Telefonu</label>
+           <input type="text" class="form-control" id="bolum_tel" value="{{bolum.bolum_tel}}" readonly>
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_mail" class="form-label">Bölüm Mail Adresi</label>
+           <input type="text" class="form-control" id="bolum_mail" value="{{bolum.bolum_mail}}" readonly>
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_adres" class="form-label">Bölüm Adresi</label>
+           <input type="text" class="form-control" id="bolum_adres" value="{{bolum.bolum_adres}}"readonly>
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_url" class="form-label">Bölüm URL</label>
+           <input type="text" class="form-control" id="bolum_url" value="{{bolum.bolum_url}}" readonly>
+        </div>
+        
+        <div class="col-md-6 mb-2">
+           <label for="bolum_staj" class="form-label">Bölüm Staj Bilgileri</label>
+           <input type="text" class="form-control" id="bolum_staj" value="{{bolum.bolum_staj}}" readonly>
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_erasmus" class="form-label">Bölüm Erasmus Bilgileri</label>
+           <input type="text" class="form-control" id="bolum_erasmus" value="{{bolum.bolum_erasmus}}" readonly>
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_ciftyan" class="form-label">Bölüm Çift Anadal - Yandal Bilgileri</label>
+           <input type="text" class="form-control" id="bolum_ciftyan" value="{{bolum.bolum_ciftyan}}" readonly>
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_mezun" class="form-label">Bölüm Mezuniyet Bilgileri</label>
+           <input type="text" class="form-control" id="bolum_mezun" value="{{bolum.bolum_mezun}}" readonly>
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_profil" class="form-label">Bölüm Profil Analizi</label>
+           <input type="text" class="form-control" id="bolum_profil" value="{{bolum.bolum_profil}}" readonly>
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_firsat" class="form-label">Bölüm Fırsatları</label>
+           <input type="text" class="form-control" id="bolum_firsat" value="{{bolum.bolum_firsat}}" readonly>
+        </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

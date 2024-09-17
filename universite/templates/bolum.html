@@ -1,0 +1,93 @@
+{% extends "master.html" %}
+{% block baslik %} {{bolum.bolum_ad}} Bölüm Sayfası {% endblock %} 
+{% load static %}
+{% block govde %}
+
+
+<div class="container" style="display:block;margin:auto;width:50%;">
+  <p class="my-4" style="display: block; text-align: center;"><b>{{bolum.bolum_ad}}</b></p>
+  <div id="accordion">
+    
+    <div class="card mb-2">
+      <div class="card-header" style="background-color:#decbca;">
+        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapse1" style="color:#3e4e4b;">
+        <b>Staj</b>
+        </a>
+      </div>
+      <div id="collapse1" class="collapse show" data-bs-parent="#accordion">
+        <div class="card-body">
+          {{bolum.bolum_staj}}
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-2">
+      <div class="card-header" style="background-color:#decbca;">
+        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapse2" style="color:#3e4e4b;">
+        <b>Erasmus</b>
+        </a>
+      </div>
+      <div id="collapse2" class="collapse show" data-bs-parent="#accordion">
+        <div class="card-body">
+          {{bolum.bolum_erasmus}}
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-2">
+      <div class="card-header" style="background-color:#decbca;">
+        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapse3" style="color:#3e4e4b;">
+        <b>Çift Anadal ve Yandal</b>
+        </a>
+      </div>
+      <div id="collapse3" class="collapse show" data-bs-parent="#accordion">
+        <div class="card-body">
+          {{bolum.bolum_ciftyan}}
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-2">
+      <div class="card-header" style="background-color:#decbca;">
+        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapse4" style="color:#3e4e4b;">
+        <b>Mezun</b>
+        </a>
+      </div>
+      <div id="collapse4" class="collapse show" data-bs-parent="#accordion">
+        <div class="card-body">
+          {{bolum.bolum_mezun}}
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-2">
+      <div class="card-header" style="background-color:#decbca;">
+        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapse5" style="color:#3e4e4b;">
+        <b>Profil</b>
+        </a>
+      </div>
+      <div id="collapse5" class="collapse show" data-bs-parent="#accordion">
+        <div class="card-body">
+          {{bolum.bolum_profil}}
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-2">
+      <div class="card-header" style="background-color:#decbca;">
+        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapse6" style="color:#3e4e4b;">
+        <b>Fırsat</b>
+        </a>
+      </div>
+      <div id="collapse6" class="collapse show" data-bs-parent="#accordion">
+        <div class="card-body">
+          {{bolum.bolum_firsat}}
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "bos.html" %}
+{% block baslik %} Haber Ekleme {% endblock %} 
+{% load static %}
+{% block govde %}
+<link rel="stylesheet" href="{% static 'css/renk.css' %}">
+<link rel="stylesheet" href="{% static 'css/icrenk.css' %}">
+<link rel="stylesheet" href="{% static 'css/yazi.css' %}">
+
+  <a href="/veriliste/">
+      <button type="button" class="btn m-2 renk yazi" value="Geri Dön" style= "border-radius: 10px; margin:10px;">Listeye Geri Dön</button>
+  </a>
+
+  <div class="container mt-3">
+
+    <div class="row">
+      <div class="container p-3 my-3 border renk yazi" style="border-radius: 10px;">
+        <form class="row g-3" method="post" action="/veriliste/haber/ekle/" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          <div class="mb-3">
+            <label for="haber_baslik" class="form-label">Haber Başlığı</label>
+            <input type="text" class="form-control" id="haber_baslik" name="haber_baslik">
+          </div>
+          <div class="mb-3">
+            <label for="haber_kisaltma" class="form-label">Haber Kısaltması</label>
+            <input type="text" class="form-control" id="haber_kisaltma" name="haber_kisaltma">
+          </div>
+          <div class="mb-3">
+            <label for="haber" class="form-label">Haber Metni</label>
+            <input type="text" class="form-control" id="haber" name="haber">
+          </div>
+          <div class="mb-3">
+            <label for="tarih" class="form-label">Haber Tarihi</label>
+            <input type="date" class="form-control" id="tarih" name="tarih">
+          </div>
+
+          <div>
+            <button type="submit" class="btn icrenk">Kaydet</button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {% if yenikayit2 == "True" %}
+
+    <div class="row pt-2 px-3">
+
+      <div class="alert alert-success d-flex align-items-center" role="alert">
+
+        <img src="{% static 'info.png' %}" width="24px">
+        <div class="ps-2">
+          Yeni kayıt başarıyla eklendi.
+        </div>
+
+      </div>
+
+    </div>
+
+  {% endif %}
+
+  {% for hata in hatalistesi %}
+
+    <div class="row pt-2 px-3">
+
+      <div class="alert alert-danger d-flex align-items-center" role="alert">
+
+        <img src="{% static 'alert.png' %}" width="24px">
+        <div class="ps-2">
+          {{ hata }}
+        </div>
+
+      </div>
+
+    </div>
+
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "bos.html" %}
+{% block baslik %} Fakülte Detayı {% endblock %}
+{% load static %}
+{% block govde %}
+<link rel="stylesheet" href="{% static 'css/renk.css' %}">
+<link rel="stylesheet" href="{% static 'css/icrenk.css' %}">
+<link rel="stylesheet" href="{% static 'css/yazi.css' %}">
+<link rel="stylesheet" href="{% static 'css/bold.css' %}">
+
+  <div class="container p-3 my-3 border renk yazi" style="border-radius: 10px; ">
+    <a href="/veriliste/">
+      <button type="button" class="btn m-2 icrenk" style="border-radius: 10px; color:#000000; margin:10px;">Listeye Geri Dön</button>
+    </a>
+    <a href="/veriliste/fakulte/duzenle/{{fakulte.fakulte_kisaltma}}">
+      <button type="button" class="btn m-2 icrenk" style="border-radius: 10px; color:#000000; margin:10px;">Düzenle</button>
+    </a>
+    <div class="container p-3 my-3 border icrenk" style="color:#000000; border-radius: 10px;">
+      <img src="{{fakulte.fakulte_logo}}" class="mx-auto my-3 d-flex align-items-center" style="max-width: 100px; max-height: 100px;">
+      <form class="row">
+        <div class="col-md-6 mt-2 mb-2">
+           <label for="kampus_adi" class="form-label">Fakülte Kampüsü</label>
+           <input type="text" class="form-control" id="kampus_adi" value="{{fakulte.kampus.kampus_adi}}" readonly>
+        </div>
+        <div class="col-md-6 mt-2 mb-2">
+           <label for="fakulte_no" class="form-label">Fakülte No</label>
+           <input type="text" class="form-control" id="fakulte_no" value="{{fakulte.fakulte_no}}" readonly>
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="fakulte_ad" class="form-label">Fakülte Adı</label>
+           <input type="text" class="form-control" id="fakulte_ad" value="{{fakulte.fakulte_ad}}" readonly>
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="fakulte_kisaltma" class="form-label">Fakülte Kısaltması</label>
+           <input type="text" class="form-control" id="fakulte_kisaltma" value="{{fakulte.fakulte_kisaltma}}" readonly>
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="fakulte_dekan" class="form-label">Fakülte Dekanı</label>
+           <input type="text" class="form-control" id="fakulte_dekan" value="{{fakulte.fakulte_dekan}}" readonly>
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="fakulte_tel" class="form-label">Fakülte Telefonu</label>
+           <input type="text" class="form-control" id="fakulte_tel" value="{{fakulte.fakulte_tel}}" readonly>
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="fakulte_mail" class="form-label">Fakülte Mail Adresi</label>
+           <input type="text" class="form-control" id="fakulte_mail" value="{{fakulte.fakulte_mail}}" readonly>
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="fakulte_url" class="form-label">Fakülte URL</label>
+           <input type="text" class="form-control" id="fakulte_url" value="{{fakulte.fakulte_url}}" readonly>
+        </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

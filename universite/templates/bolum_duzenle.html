@@ -1,0 +1,130 @@
+{% extends "bos.html" %}
+{% block baslik %} Bölüm Düzenleme {% endblock %}
+{% load static %}
+{% block govde %}
+<link rel="stylesheet" href="{% static 'css/renk.css' %}">
+<link rel="stylesheet" href="{% static 'css/icrenk.css' %}">
+<link rel="stylesheet" href="{% static 'css/yazi.css' %}">
+<link rel="stylesheet" href="{% static 'css/bold.css' %}">
+
+  <div class="container p-3 my-3 border renk yazi" style="border-radius: 10px;">
+    <a href="/veriliste/">
+      <button type="button" class="btn m-2 icrenk" style="border-radius: 10px; color:#000000; margin:10px;">Listeye Geri Dön</button>
+    </a>
+    
+    <div class="container p-3 my-3 border icrenk" style="color:#000000; border-radius: 10px;">
+      <form class="row icrenk" method="post" action="/veriliste/bolum/duzenle/{{bolum.bolum_kisaltma}}/" enctype="multipart/form-data" style="border-radius:10px; color:#000000">
+        <div class="col-md-6 mt-2 mb-2">
+          <label for="fakulte_ad" class="form-label">Bölüm Fakültesi</label>
+          <select class="form-control" id="fakulte_ad" name="fakulte_ad">
+            {% for fakulte in fakulteliste %}
+              <option value="{{fakulte.fakulte_ad}}"
+                {% if bolum.fakulte.fakulte_ad == fakulte.fakulte_ad %}
+                  selected="{{fakulte.fakulte_ad}}"
+                {% endif %}
+              >{{fakulte.fakulte_ad}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-6 mt-2 mb-2">
+           <label for="bolum_no" class="form-label">Bölüm No</label>
+           <input type="text" class="form-control" id="bolum_no" name="bolum_no" value="{{bolum.bolum_no}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_ad" class="form-label">Bölüm Adı</label>
+           <input type="text" class="form-control" id="bolum_ad" name="bolum_ad" value="{{bolum.bolum_ad}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_kisaltma" class="form-label">Bölüm Kısaltması</label>
+           <input type="text" class="form-control" id="bolum_kisaltma" name="bolum_kisaltma" value="{{bolum.bolum_kisaltma}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_baskan" class="form-label">Bölüm Başkanı</label>
+           <input type="text" class="form-control" id="bolum_baskan" name="bolum_baskan" value="{{bolum.bolum_baskan}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_tel" class="form-label">Bölüm Telefonu</label>
+           <input type="text" class="form-control" id="bolum_tel" name="bolum_tel" value="{{bolum.bolum_tel}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_mail" class="form-label">Bölüm Mail Adresi</label>
+           <input type="text" class="form-control" id="bolum_mail" name="bolum_mail" value="{{bolum.bolum_mail}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_adres" class="form-label">Bölüm Adresi</label>
+           <input type="text" class="form-control" id="bolum_adres" name="bolum_adres" value="{{bolum.bolum_adres}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_url" class="form-label">Bölüm URL</label>
+           <input type="text" class="form-control" id="bolum_url" name="bolum_url" value="{{bolum.bolum_url}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_logo" class="form-label">Bölüm Logosu</label>
+           <input type="file" class="form-control" id="bolum_logo" name="bolum_logo">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_staj" class="form-label">Bölüm Staj Bilgileri</label>
+           <input type="text" class="form-control" id="bolum_staj" name="bolum_staj" value="{{bolum.bolum_staj}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_erasmus" class="form-label">Bölüm Erasmus Bilgileri</label>
+           <input type="text" class="form-control" id="bolum_erasmus" name="bolum_erasmus" value="{{bolum.bolum_erasmus}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_ciftyan" class="form-label">Bölüm Çift Anadal - Yandal Bilgileri</label>
+           <input type="text" class="form-control" id="bolum_ciftyan" name="bolum_ciftyan" value="{{bolum.bolum_ciftyan}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_mezun" class="form-label">Bölüm Mezuniyet Bilgileri</label>
+           <input type="text" class="form-control" id="bolum_mezun" name="bolum_mezun" value="{{bolum.bolum_mezun}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_profil" class="form-label">Bölüm Profil Analizi</label>
+           <input type="text" class="form-control" id="bolum_profil" name="bolum_profil" value="{{bolum.bolum_profil}}">
+        </div>
+        <div class="col-md-6 mb-2">
+           <label for="bolum_firsat" class="form-label">Bölüm Fırsatları</label>
+           <input type="text" class="form-control" id="bolum_firsat" name="bolum_firsat" value="{{bolum.bolum_firsat}}">
+        </div>
+        <div>
+          <button type="submit" class="btn renk yazi my-2">Güncelle</button>
+        </div>
+        {% if yenikayit1 == "True" %}
+
+          <div class="row pt-2 px-3">
+
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+
+              <img src="{% static 'info.png' %}" width="24px">
+              <div class="ps-2">
+                Başarıyla güncellendi
+              </div>
+
+            </div>
+
+          </div>
+
+        {% endif %}
+
+        {% for hata in hatalistesi %}
+
+          <div class="row pt-2 px-3">
+
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+
+              <img src="{% static 'alert.png' %}" width="24px">
+              <div class="ps-2">
+                {{ hata }}
+              </div>
+
+            </div>
+
+          </div>
+
+        {% endfor %}
+      </form>
+      
+    </div>
+  </div>
+
+{% endblock %}
